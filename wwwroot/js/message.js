@@ -19,6 +19,7 @@ connection.start().catch(function (err) {
 document.getElementById("sendButton").addEventListener("click", function (e) {
 
     var message = document.getElementById("message").value;
+    document.getElementById("message").value = "";
     connection.invoke("SendMessageToAll", message).catch(function (err) {
         return console.error(err.toString());
     });

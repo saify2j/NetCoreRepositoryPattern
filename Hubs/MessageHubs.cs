@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using MessagingRealtime.EFCore;
+using MessagingRealtime.Models;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,26 @@ namespace MessagingRealtime.Hubs
 {
     public class MessageHubs : Hub
     {
-        public  Task SendMessageToAll(string message)
+        private readonly MessageRepository _messageRepository;
+        public MessageHubs(MessageRepository messageRepository)
         {
-            return Clients.All.SendAsync("ReceiveMessage", message);
+            _messageRepository = messageRepository;
+        }
+        public async Task SendMessageToAll(string message)
+        {
+            await AddMessageToDB(message);
+            await Clients.All.SendAsync("ReceiveMessage", message);
+        }
+
+        private async Task AddMessageToDB(string message)
+        {
+            Message m = new Message
+            {
+                UserName = "Saif",
+                Text = message,
+
+            };
+            await _messageRepository.Add(m);
         }
     }
 }
