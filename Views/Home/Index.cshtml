@@ -1,30 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 <div class="container-fluid">
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
+        <p>Write in the text area on the left to start messaging!</p>
     </div>
     <div class="text-center">
         <div class="row">
-            <div class="col-lg-4">
-                <textarea name="message" id="message"></textarea>
-
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="md-form">
+                            <textarea id="message" name="message" class="md-textarea form-control" rows="3"></textarea>
+                            <label for="message">Write here!</label>
+                        </div>
+                    </div>
+                    <div class="col-12 text-left">
+                        <input type="button" id="sendButton" class="btn btn-primary" value="Send" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
                 <div id="messages"></div>
             </div>
-            <div class="col-lg-4">
-                <input type="button" id="sendButton" class="btn btn-primary" value="Send" />
-            </div>
         </div>
-
     </div>
-
-
 </div>
-
 <script src="~/js/signalr.js"></script>
 <script src="~/js/message.js"></script>

@@ -1,0 +1,139 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <title>MSG SignalR- Sign Up</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Favicon icon -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body class="h-100">
+    <style>
+        #reg-image-div {
+            height: 100vh;
+            background: #d5d4ff;
+        }
+
+        #reg-image {
+            max-width: 100%;
+            max-height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+            display: block;
+        }
+        #reg-card{
+            width:60%;
+            margin-left:auto;
+            margin-right:auto;
+            border-radius:0;
+            margin-top:auto;
+            margin-bottom:auto;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        h2{
+            color:mediumpurple;
+        }
+        .floating {
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        margin-left: 30px;
+        margin-top: 5px;
+        }
+        .btn-primary{
+            border-radius:0;
+        }
+        @@keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }
+        }
+    </style>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <div class="row">
+        <div id="reg-image-div" class="col align-items-center  d-none d-lg-block">
+            <img id="reg-image" class="floating" src="~/images/reg-image.png" />
+            <h2 align="center">Welcome to the best messaging app!</h2>
+        </div>
+        <div class="col box">
+            <div id="reg-card" class="card login-form">
+                <div class="card-body pt-5">
+                    <h5 class="card-header text-center">Sign Up!</h5>
+                    <form asp-action="Registration" method="post">
+                        <label id="msgLabel" class="text-green"></label>
+                        <div class="form-group">
+                            <input name="FullName" class="form-control" placeholder="Full Name" required />
+                        </div>
+                        <div class="form-group">
+                            <input name="UserName" class="form-control" placeholder="User Name" required />
+                        </div>
+                        <div class="form-group">
+                            <input name="Email" class="form-control" placeholder="Email" required />
+                        </div>
+                        <div class="form-group">
+                            <input name="Location" class="form-control" placeholder="Location" required />
+                        </div>
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control" placeholder="Password" required />
+                        </div>
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control" placeholder="Confirm Password" required />
+                        </div>
+                        <div class="form-group" style="text-align:center">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                    </form>
+                    <p class="mt-5 login-form__footer">Already have an account? <a href="@Url.ActionLink("Login","Authentication")" class="text-primary">Sign In</a> now</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/plugins/common/common.min.js"></script>
+    <script src="~/js/custom.min.js"></script>
+    <script src="~/js/settings.js"></script>
+    <script src="~/js/gleek.js"></script>
+    <script src="~/js/styleSwitcher.js"></script>
+</body>
+</html>
+
+
+
+
+

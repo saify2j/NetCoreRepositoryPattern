@@ -1,0 +1,114 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <title>MSG SignalR- Sign In</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Favicon icon -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body class="h-100">
+    <style>
+        #card-background {
+            height: 475px;
+            padding: 0;
+            background: #d5d4ff
+        }
+        #card-login {
+            height: 475px;
+            border-radius: 0px;
+        }
+        #back-image {
+            height: 450px;
+            background: url('@Url.Content("~/images/card-login-2.svg")');
+            background-size: contain;
+            margin:5px auto;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-primary {
+            border-radius: 0;
+        }
+    </style>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <div class="login-form-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-5 pr-0 d-none d-lg-block" >
+                    <div class="form-input-content">
+                        <div class="card login-form  mb-0" style="border-radius:0px;">
+                            <div id="card-background" class="card-body">
+                                <div id="back-image"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 pl-0">
+                    <div class="form-input-content">
+                        <div id="card-login" class="card login-form mb-0">
+                            <div class="card-body pt-5">
+                                <a class="text-center" href="#"> <h4>Message Realtime</h4></a>
+                                <form class="mt-5 mb-5" asp-action="Login" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="Identity" class="form-control" placeholder="Email/User Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="PlainSecret" class="form-control" placeholder="Password" required>
+                                    </div>
+                                    <button class="btn btn-primary submit w-100">Sign In</button>
+                                </form>
+                                <p class="mt-5 login-form__footer">Dont have account? <a href="@Url.ActionLink("Registration","Authentication")" class="text-primary">Sign Up</a> now</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="~/plugins/common/common.min.js"></script>
+    <script src="~/js/custom.min.js"></script>
+    <script src="~/js/settings.js"></script>
+    <script src="~/js/gleek.js"></script>
+    <script src="~/js/styleSwitcher.js"></script>
+    <script>
+        $(document).ready(function () {
+            var errorMsg = '@TempData["ERROR"]';
+            if (errorMsg != null && errorMsg != "") {
+                swal("Error", errorMsg, "error")
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+

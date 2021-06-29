@@ -2,7 +2,7 @@
 
 namespace MessagingRealtime.Migrations
 {
-    public partial class message : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

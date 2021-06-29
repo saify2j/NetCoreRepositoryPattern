@@ -1,9 +1,6 @@
 ﻿using MessagingRealtime.EFCore;
 using MessagingRealtime.Models;
 using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MessagingRealtime.Hubs

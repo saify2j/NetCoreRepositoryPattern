@@ -4,21 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MessagingRealtime</title>
-   
-    <link href="~/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
-    <!-- Page plugins css -->
-    <link href="~/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
-    <!-- Color picker plugins css -->
-    <link href="~/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">
-    <!-- Date picker plugins css -->
-    <link href="~/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
-    <!-- Daterange picker plugins css -->
-    <link href="~/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-    <link href="~/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="~/css/style.css" rel="stylesheet">
-
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/mdb.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            /* Margin bottom by footer height */
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 60px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #f5f5f5;
+            margin-bottom:0;
+        }
+    </style>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -41,37 +55,19 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
             @RenderBody()
-        </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - MessagingRealtime - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer">
+        <div class="text-center">
+            <p>Copyright &copy; Designed by <a href="#">Saif Kamal Chowdhury</a> 2021&nbsp;</p>
         </div>
     </footer>
-    <script src="~/plugins/common/common.min.js"></script>
-    <script src="~/js/custom.min.js"></script>
-    <script src="~/js/settings.js"></script>
-    <script src="~/js/gleek.js"></script>
-    <script src="~/js/styleSwitcher.js"></script>
-
-    <script src="~/plugins/moment/moment.js"></script>
-    <script src="~/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-    <!-- Clock Plugin JavaScript -->
-    <script src="~/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
-    <!-- Color Picker Plugin JavaScript -->
-    <script src="~/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
-    <script src="~/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
-    <script src="~/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
-    <!-- Date Picker Plugin JavaScript -->
-    <script src="~/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- Date range Plugin JavaScript -->
-    <script src="~/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-    <script src="~/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-    <script src="~/js/plugins-init/form-pickers-init.js"></script>
+    <script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/mdb.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/po"></script>
+    <script type="text/javascript" src="~/js/mdb.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

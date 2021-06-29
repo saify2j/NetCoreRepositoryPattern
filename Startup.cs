@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MessagingRealtime.Data;
 using MessagingRealtime.EFCore;
 using MessagingRealtime.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +28,7 @@ namespace MessagingRealtime
                options.UseSqlServer(
                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<MessageRepository>();
+            services.AddScoped<AppUserRepository>();
             services.AddSwaggerGen();
         }
 
@@ -65,10 +61,10 @@ namespace MessagingRealtime
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<MessageHubs>("/messages");
+                endpoints.MapHub<MessageHubs>("/home/messages");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Authentication}/{action=Login}/{id?}");
             });
         }
     }
