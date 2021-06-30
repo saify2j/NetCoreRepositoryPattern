@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model MessagingRealtime.ViewModels.AppUserViewModel
+<style>
+</style>
+<div class="container-fluid">
+
+    <!-- Section: Edit Account -->
+    <section class="section">
+        <!-- First row -->
+        <div class="row">
+            <!-- First column -->
+            <div class="col-lg-4 mb-4">
+                <!-- Card -->
+                <div class="card card-cascade narrower">
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header mdb-color lighten-3" style="background-color:#7571f9 !important;">
+                        <h5 class="mb-0 font-weight-bold">Avatar</h5>
+                    </div>
+                    <!-- Card image -->
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center">
+                        <img id="avatar" src="~/images/profile.jpg" alt="User Photo" height="165" width="165" class="z-depth-1 mb-3 mx-auto" />
+                        <p class="text-muted"><small>Avatar will be changed automatically</small></p>
+                        <form class="md-form">
+                            <div class="file-field">
+                                <div class="d-flex justify-content-center">
+                                    <div class="btn btn-primary btn-md float-left">
+                                        <span>Change photo</span>
+                                        <input id="changePhoto" type="file">
+                                    </div>
+                                    <button class="btn btn-danger btn-md">Delete</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Card content -->
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- First column -->
+            <!-- Second column -->
+            <div class="col-lg-8 mb-4">
+                <!-- Card -->
+                <div class="card card-cascade narrower">
+
+                    <!-- Card image -->
+                    <div class="view view-cascade gradient-card-header mdb-color lighten-3" style="background-color:#7571f9 !important;">
+                        <h5 class="mb-0 font-weight-bold">Edit Account</h5>
+                    </div>
+                    <!-- Card image -->
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center">
+
+                        <!-- Edit Form -->
+                        <form>
+                            <!-- First row -->
+
+                            <div class="row">
+
+                                <!-- First column -->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <input type="text" id="form1" class="form-control validate" value="@Model.FullName" disabled>
+                                        <label for="form1" data-error="wrong" data-success="right">Full Name</label>
+                                    </div>
+                                </div>
+                                <!-- Second column -->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <input type="text" id="form2" class="form-control validate" value="@Model.UserName" disabled>
+                                        <label for="form2" data-error="wrong" data-success="right">Username</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- First row -->
+                            <!-- Second row -->
+                            <div class="row">
+
+                                <!-- First column -->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <input type="email" id="form76" class="form-control validate" value="@Model.Email" disabled>
+                                        <label for="form76">Email address</label>
+                                    </div>
+                                </div>
+                                <!-- Second column -->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <input type="text" id="form77" class="form-control validate" value="@Model.Location" disabled>
+                                        <label for="form77" data-error="wrong" data-success="right">Location</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Second column -->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        <input type="text" id="form77" class="form-control validate" value="@Model.DateOfBirth" disabled>
+                                        <label for="form77" data-error="wrong" data-success="right">Birth Date</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Second row -->
+                            <!-- Fourth row -->
+                            <div class="row">
+                                <div class="col-md-12 text-center my-4">
+                                    <input type="submit" value="Update Account" class="btn btn-primary">
+                                </div>
+                            </div>
+                            <!-- Fourth row -->
+
+                        </form>
+                        <!-- Edit Form -->
+
+                    </div>
+                    <!-- Card content -->
+
+                </div>
+                <!-- Card -->
+
+            </div>
+            <!-- Second column -->
+
+        </div>
+        <!-- First row -->
+
+    </section>
+    <!-- Section: Edit Account -->
+
+</div>
+<script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
+<script>
+    document.getElementById('changePhoto').onchange = function (e) {
+        // Get the first file in the FileList object
+        var imageFile = this.files[0];
+        // get a local URL representation of the image blob
+        var url = window.URL.createObjectURL(imageFile);
+        // Now use your newly created URL!
+        var someImageTag = document.getElementById('avatar');
+        someImageTag.src = url;
+    }
+</script>

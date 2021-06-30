@@ -12,5 +12,6 @@ namespace MessagingRealtime.ViewModels
         public string Password { get; set; }
         public string Location { get; set; }
         public string Email { get; set; }
+        public string DateOfBirth { get; set; }
     }
 }

@@ -17,8 +17,6 @@ namespace MessagingRealtime.Controllers
     public class UsersController : Controller
     {
         private readonly AppUserRepository _userRepository;
-
-
         public UsersController(AppUserRepository appUserRepository)
         {
             _userRepository = appUserRepository;
@@ -42,5 +40,6 @@ namespace MessagingRealtime.Controllers
                 return BadRequest();
             }
         }
+        
     }
 }

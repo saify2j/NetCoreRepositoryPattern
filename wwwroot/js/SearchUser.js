@@ -23,8 +23,6 @@
                         if (msg.length > 0) {
 
                             res = JSON.parse(msg)
-                            console.log(typeof (res))
-                            console.log(res.data);
                             var result = res.data;
                             ul.innerHTML = "";
                             for (var i = 0; i < result.length; i++) {
@@ -32,11 +30,8 @@
                                 var fName = result[i].firstName;
                                 var loc = result[i].location;
                                 var pUri = "profile.jpg";
-                                console.log(pUri)
                                 var htmlElem = createmyElements(uName, fName, loc, pUri)
-
                                 var li = document.createElement("li");
-                                console.log(htmlElem)
                                 li.innerHTML = htmlElem;
                                 li.style.cssText = "margin-top:5px;"
                                 ul.appendChild(li);

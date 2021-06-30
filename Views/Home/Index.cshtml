@@ -7,6 +7,15 @@
     #myTabJust {
         background-color: #7571f9 !important;
     }
+    #userSearch {
+        width: 70%;
+        height: 55px;
+        border-radius: 30px;
+    }
+    #serachIcon{
+        margin-top:-36px;
+        margin-left:30%;
+    }
 </style>
 <div class="container-fluid my-4">
     <div class="text-center">
@@ -62,9 +71,15 @@
                     <div class="text-center">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input type="text" id="userSearch" class="form-control mx-auto" style="width:70%;" placeholder="Type the username you're looking for..." />
+                                @*<div class="form-group">
+            <input type="text" id="userSearch" class="form-control mx-auto" style="width:70%;height:55px;border-radius:30px;" placeholder="Type the username you're looking for..." />
+        </div>*@
+
+                                <div class="form-group position-relative">
+                                    <input type="text" id="userSearch" class="form-control mx-auto" placeholder="Type the username you're looking for...">
+                                    <i id="serachIcon" class="fas fa-search fa-lg position-absolute"></i>
                                 </div>
+                               
                             </div>
                             <div class="col-lg-12">
                                 <div id="searchResultCard">
