@@ -1,8 +1,11 @@
 ﻿using MessagingRealtime.EFCore;
+using MessagingRealtime.Helpers;
 using MessagingRealtime.Models;
 using MessagingRealtime.Services;
 using MessagingRealtime.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,8 @@ namespace MessagingRealtime.Controllers
     public class AuthenticationController : Controller
     {
         private readonly AppUserRepository _userRepository;
+        
+
         public AuthenticationController(AppUserRepository appUserRepository)
         {
             _userRepository = appUserRepository;
@@ -32,6 +37,7 @@ namespace MessagingRealtime.Controllers
                 if(user is not null)
                 {
                     SecurityService.DecryptAndCheck(user.Password, user.SecretSalt, loginViewModel.PlainSecret);
+                    HttpContext.Session.SetString(Constants.LoggedInUser, JsonConvert.SerializeObject(user));
                     return RedirectToAction("Index", "Home");
                 }
                 return View();
@@ -46,7 +52,12 @@ namespace MessagingRealtime.Controllers
             }
             
         }
-
+        [HttpGet]
+        public IActionResult SignOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Authentication");
+        }
         [HttpGet]
         public IActionResult Registration()
         {

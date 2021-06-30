@@ -1,6 +1,11 @@
 ﻿using MessagingRealtime.EFCore;
+using MessagingRealtime.Helpers;
 using MessagingRealtime.Models;
+using MessagingRealtime.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json;
+using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
 namespace MessagingRealtime.Hubs
@@ -12,18 +17,27 @@ namespace MessagingRealtime.Hubs
         {
             _messageRepository = messageRepository;
         }
-        public async Task SendMessageToAll(string message)
+        public async Task SendMessageToAll(MessageViewModel message)
         {
             await AddMessageToDB(message);
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync("ReceiveMessage", message.UserName + ": " + message.Message);
+            //await Clients.User(userId).SendAsync("ReceiveSingleMessage", message.Message);
         }
 
-        private async Task AddMessageToDB(string message)
+        public static ConcurrentDictionary<string, string> MyUsers = new ConcurrentDictionary<string, string>();
+
+        public override Task OnConnectedAsync()
+        {
+            AppUser appUserConnected = JsonConvert.DeserializeObject<AppUser>(Context.GetHttpContext().Session.GetString(Constants.LoggedInUser));
+            MyUsers.TryAdd(appUserConnected.UserName, Context.ConnectionId);
+            return base.OnConnectedAsync();
+        }
+        private async Task AddMessageToDB(MessageViewModel message)
         {
             Message m = new Message
             {
-                UserName = "Saif",
-                Text = message,
+                UserName = message.UserName,
+                Text = message.Message,
 
             };
             await _messageRepository.Add(m);

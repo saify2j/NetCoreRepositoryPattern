@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace MessagingRealtime
 {
@@ -30,6 +31,10 @@ namespace MessagingRealtime
             services.AddScoped<MessageRepository>();
             services.AddScoped<AppUserRepository>();
             services.AddSwaggerGen();
+            services.AddHttpContextAccessor();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);//You can set Time   
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +63,7 @@ namespace MessagingRealtime
             app.UseRouting();
            
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<MessageHubs>("/home/messages");

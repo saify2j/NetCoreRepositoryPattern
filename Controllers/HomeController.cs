@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MessagingRealtime.Models;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using MessagingRealtime.Helpers;
 
 namespace MessagingRealtime.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -20,7 +22,13 @@ namespace MessagingRealtime.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            string userString = HttpContext.Session.GetString(Constants.LoggedInUser);
+            if(string.IsNullOrEmpty(userString))
+            {
+                return RedirectToAction("LogIn", "Authentication");
+            }
+            AppUser currentUser = JsonConvert.DeserializeObject<AppUser>(userString);
+            return View(currentUser);
         }
 
         public IActionResult Privacy()

@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model MessagingRealtime.Models.AppUser
 <div class="container-fluid">
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
@@ -16,6 +17,7 @@
                             <textarea id="message" name="message" class="md-textarea form-control" rows="3"></textarea>
                             <label for="message">Write here!</label>
                         </div>
+                        <input id="username" value="@Model.UserName" hidden/>
                     </div>
                     <div class="col-12 text-left">
                         <input type="button" id="sendButton" class="btn btn-primary" value="Send" />
