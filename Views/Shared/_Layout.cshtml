@@ -68,18 +68,19 @@
         .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover, .dropleft .dropdown-menu .dropdown-item:active, .dropleft .dropdown-menu .dropdown-item:hover, .dropright .dropdown-menu .dropdown-item:active, .dropright .dropdown-menu .dropdown-item:hover, .dropup .dropdown-menu .dropdown-item:active, .dropup .dropdown-menu .dropdown-item:hover {
             background-color: #4540f7 !important;
         }
+
         .btn-primary {
             color: #fff;
             background-color: #7571f9 !important;
             border-color: #7571f9 !important;
         }
-        .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-            background: #4540f7 !important;
-            background-color: #4540f7 !important;
-            color: #fff;
-            border-color: #4540f7;
-        }
 
+            .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+                background: #4540f7 !important;
+                background-color: #4540f7 !important;
+                color: #fff;
+                border-color: #4540f7;
+            }
     </style>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -123,11 +124,12 @@
             <p id="footer-text">Copyright &copy; Designed by <a href="#">Saif Kamal Chowdhury</a> 2021&nbsp;</p>
         </div>
     </footer>
+    @RenderSection("Scripts", required: false)
     <script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="~/js/mdb.min.js"></script>
     <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/js/popper.min.js"></script>
     <script type="text/javascript" src="~/js/mdb.min.js"></script>
-    @RenderSection("Scripts", required: false)
+
 </body>
 </html>

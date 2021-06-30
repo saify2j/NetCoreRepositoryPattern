@@ -35,6 +35,7 @@ namespace MessagingRealtime
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);//You can set Time   
             });
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
